@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Joseph O. Mello - Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,15 +15,39 @@
         header {
             background-color: #333;
             color: #fff;
-            padding: 20px;
+            padding: 10px 20px;
             text-align: center;
+        }
+
+        .social-icons {
+            position: absolute; /* or 'fixed' if you want it to stay at the top when scrolling */
+            top: 10px; /* adjust as needed */
+            right: 10px; /* adjust as needed */
+            z-index: 1000;
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.3);  /* Optional: Slightly enlarges the icon when hovered */
+        }
+
+        .social-icons img {
+            width: 48px;  /* Adjust this value depending on the desired size of your icons */
+            height: auto;
         }
 
         nav {
             display: flex;
             justify-content: center;
             background-color: #444;
-            padding: 10px;
+            padding: 10px 20px;
         }
 
         nav a {
@@ -35,6 +59,11 @@
             transition: background-color 0.3s;
         }
 
+        h1, h2, h3, h4, h5, h6, p {
+            text-align: center;
+        }
+
+
         nav a:hover {
             background-color: #555;
         }
@@ -45,6 +74,83 @@
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .horizontal-container {
+            display: flex;            /* Activates flexbox */
+            justify-content: space-between; /* Spaces out the sections evenly */
+            align-items: center;      /* Vertically centers content in each section */
+            width: 100%;              /* Takes full width of its parent */
+            padding: 10px;            /* Some spacing around the container */
+            border: 1px solid #ddd;   /* Optional: for visual clarity */
+        }
+
+        .carousel-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 1041px;
+            overflow: hidden;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: all 0.3s ease;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide {
+            width: 80%; /* or whatever width you prefer */
+            height: 200px; /* adjust based on your preference */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Hide all slides by default */
+        .slide {
+            display: none;
+        }
+
+        /* Display slides based on checked radio button */
+        #slide1:checked ~ .carousel-slides #slide-content-1,
+        #slide2:checked ~ .carousel-slides #slide-content-2,
+        #slide3:checked ~ .carousel-slides #slide-content-3 {
+            display: block;
+        }
+
+        .carousel-controls label {
+            cursor: pointer;
+            /*display: inline-block;*/
+            width: 10px;
+            height: 10px;
+            background-color: #ddd;
+            margin: 5px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #slide1:checked ~ .carousel-controls label:nth-of-type(1),
+        #slide2:checked ~ .carousel-controls label:nth-of-type(2),
+        #slide3:checked ~ .carousel-controls label:nth-of-type(3) {
+            background-color: #555;
+        }
+
+        .section {
+            flex: 1;                  /* Each section will grow to take equal space */
+            padding: 10px;            /* Some inner spacing for each section */
+            border: 1px solid #ccc;   /* Optional: for visual clarity */
+            text-align: center;       /* Centers the text or content inside each section */
         }
 
         footer {
@@ -60,6 +166,18 @@
     <header>
         <h1>Joseph O. Mello</h1>
         <p>Developer | AI/ML | Applied Math</p>
+        <div class="social-icons">
+        <a href="https://www.linkedin.com/in/josephmellocs/" target="_blank">
+            <img src="/linkedin.svg" alt="LinkedIn">
+        </a>
+        <a href="https://github.com/melloj650" target="_blank">
+            <img src="/square-github.svg" alt="GitHub">
+        </a>
+        <a href="mailto:melloj650@gmail.com">
+            <img src="/square-envelope-solid.svg" alt="Email">
+    </a>
+</div>
+
     </header>
     <nav>
         <a href="#home">Home</a>
@@ -80,6 +198,23 @@
 	<section id="portfolio">
             <h2>Portfolio</h2>
             <p>Here are some of my latest works:</p>
+            <div class="carousel-container">
+                <input type="radio" id="slide1" name="slide" checked>
+                <input type="radio" id="slide2" name="slide">
+                <input type="radio" id="slide3" name="slide">
+                
+                <div class="carousel-slides">
+                  <div class="slide" id="slide-content-1">Slide 1 Content</div>
+                  <div class="slide" id="slide-content-2">Slide 2 Content</div>
+                  <div class="slide" id="slide-content-3">Slide 3 Content</div>
+                </div>
+                
+                <div class="carousel-controls">
+                  <label for="slide1"></label>
+                  <label for="slide2"></label>
+                  <label for="slide3"></label>
+                </div>
+              </div>              
             <!-- You can add more of your projects here -->
         </section>
 
@@ -88,6 +223,7 @@
             <p>You can reach me at: <a href="mailto:melloj650@gmail.com">melloj650@gmail.com</a></p>
         </section>
     </div>
+    
 
     <footer>
         <p>&copy; 2023 Joseph Mello. All rights reserved.</p>
